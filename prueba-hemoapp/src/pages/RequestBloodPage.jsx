@@ -1,47 +1,3 @@
-import * as React from "react";
-import { cn } from "@/lib/utils";
-
-const Button = React.forwardRef(
-  ({ className, variant = "default", size = "default", ...props }, ref) => {
-    return (
-      <button
-        className={cn(
-          "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
-          className
-        )}
-        ref={ref}
-        {...props}
-      />
-    );
-  }
-);
-Button.displayName = "Button";
-
-const Input = React.forwardRef(({ className, type, ...props }, ref) => {
-  return (
-    <input
-      type={type}
-      className={className}
-      ref={ref}
-      {...props}
-    />
-  )
-})
-Input.displayName = "Input"
-
-const Label = React.forwardRef(({ className, ...props }, ref) => {
-  return (
-    <label
-      ref={ref}
-      className={className}
-      {...props}
-    />
-  )
-})
-Label.displayName = "Label"
-
-export { Button, Input, Label };
-
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Heart } from 'lucide-react';
@@ -217,3 +173,5 @@ export default function RequestBloodPage() {
     </div>
   );
 }
+
+export default RequestBloodPage;
