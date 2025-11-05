@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import LandingPage from './pages/LandingPage.jsx';
-import LoginPage from './pages/LoginPage.jsx';
-import RegisterPage from './pages/RegisterPage.jsx';
-import DashboardPage from './pages/DashboardPage.jsx';
-import BloodRequestsPage from './pages/BloodRequestsPage.jsx';
-import MapPage from './pages/MapPage.jsx';
-import ProfilePage from './pages/ProfilePage.jsx';
-import DonorStatusPage from './pages/DonorStatusPage.jsx';
+import Landing from './pages/Landing.jsx';
+import Login from './pages/Login.jsx';
+import Register from './pages/Register.jsx';
+import Dashboard from './pages/Dashboard.jsx';
+import PedidosSangre from './pages/PedidosSangre.jsx';
+import Map from './pages/Map.jsx';
+import Profile from './pages/Profile.jsx';
+import EstadoDonante from './pages/EstadoDonante.jsx';
 import RequestBloodPage from './pages/RequestBloodPage.jsx';
 import { Toaster } from './components/ui/toaster.jsx';
 
@@ -52,13 +52,13 @@ export default function App() {
     <Router>
       <Routes>
         {/* Public routes */}
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<Landing />} />
         <Route 
           path="/login" 
           element={
             isAuthenticated ? 
             <Navigate to="/dashboard" replace /> : 
-            <LoginPage onLogin={handleLogin} />
+            <Login onLogin={handleLogin} />
           } 
         />
         <Route 
@@ -66,7 +66,7 @@ export default function App() {
           element={
             isAuthenticated ? 
             <Navigate to="/dashboard" replace /> : 
-            <RegisterPage onRegister={handleLogin} />
+            <Register onRegister={handleLogin} />
           } 
         />
         <Route path="/solicitar-sangre" element={<RequestBloodPage />} />
@@ -76,7 +76,7 @@ export default function App() {
           path="/dashboard" 
           element={
             isAuthenticated ? 
-            <DashboardPage user={user} onLogout={handleLogout} /> : 
+            <Dashboard user={user} onLogout={handleLogout} /> : 
             <Navigate to="/login" replace />
           } 
         />
@@ -84,7 +84,7 @@ export default function App() {
           path="/solicitudes" 
           element={
             isAuthenticated ? 
-            <BloodRequestsPage user={user} onLogout={handleLogout} /> : 
+            <PedidosSangre user={user} onLogout={handleLogout} /> : 
             <Navigate to="/login" replace />
           } 
         />
@@ -92,7 +92,7 @@ export default function App() {
           path="/mapa" 
           element={
             isAuthenticated ? 
-            <MapPage user={user} onLogout={handleLogout} /> : 
+            <Map user={user} onLogout={handleLogout} /> : 
             <Navigate to="/login" replace />
           } 
         />
@@ -100,7 +100,7 @@ export default function App() {
           path="/perfil" 
           element={
             isAuthenticated ? 
-            <ProfilePage user={user} onLogout={handleLogout} onUpdateUser={handleUpdateUser} /> : 
+            <Profile user={user} onLogout={handleLogout} onUpdateUser={handleUpdateUser} /> : 
             <Navigate to="/login" replace />
           } 
         />
@@ -108,7 +108,7 @@ export default function App() {
           path="/estado-donador" 
           element={
             isAuthenticated ? 
-            <DonorStatusPage user={user} onLogout={handleLogout} /> : 
+            <EstadoDonante user={user} onLogout={handleLogout} /> : 
             <Navigate to="/login" replace />
           } 
         />
